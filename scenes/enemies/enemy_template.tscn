@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/enemies/enemy_template.gd" type="Script" id=1]
+[ext_resource path="res://scenes/management/sfx.tscn" type="PackedScene" id=2]
+
+[node name="EnemyTemplate" type="KinematicBody2D"]
+script = ExtResource( 1 )
+sfx = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="DetectionArea"]
+
+[node name="DamageArea" type="Area2D" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="DamageArea"]
+
+[connection signal="body_entered" from="DetectionArea" to="." method="on_detection_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="on_detection_area_body_exited"]
+[connection signal="body_entered" from="DamageArea" to="." method="on_damage_area_body_entered"]

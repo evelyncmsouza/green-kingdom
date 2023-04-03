@@ -1,0 +1,184 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scenes/decoration/background.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/font/ThaleahFat.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scripts/decoration/initian_screen.gd" type="Script" id=3]
+[ext_resource path="res://scenes/management/sfx.tscn" type="PackedScene" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("GameName:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 48, 18 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("VBox:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Background:can_move_layer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "initian_screen_animation"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("GameName:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 2.1, 2.2, 2.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 48, -1600 ), Vector2( 42, 18 ), Vector2( 42, -18 ), Vector2( 42, 24 ), Vector2( 42, 18 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("VBox:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2.3, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Background:can_move_layer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="InitianScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+sfx = ExtResource( 4 )
+
+[node name="Background" parent="." instance=ExtResource( 1 )]
+
+[node name="GameName" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -144.0
+margin_top = 18.0
+margin_right = 144.0
+margin_bottom = 62.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 3
+custom_fonts/font = SubResource( 1 )
+text = "Green Kingdom"
+align = 1
+valign = 1
+
+[node name="VBox" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -32.0
+margin_right = 40.0
+margin_bottom = 32.0
+
+[node name="Start" type="Button" parent="VBox"]
+margin_right = 80.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 80, 30 )
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+
+[node name="Text" type="Label" parent="VBox/Start"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -38.0
+margin_top = -15.0
+margin_right = 38.0
+margin_bottom = 15.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 3
+custom_fonts/font = SubResource( 2 )
+text = "Start"
+align = 1
+valign = 1
+
+[node name="Quit" type="Button" parent="VBox"]
+margin_top = 34.0
+margin_right = 80.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 80, 30 )
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+
+[node name="Text" type="Label" parent="VBox/Quit"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -38.0
+margin_top = -15.0
+margin_right = 38.0
+margin_bottom = 15.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 3
+custom_fonts/font = SubResource( 2 )
+text = "Exit"
+align = 1
+valign = 1
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+autoplay = "initian_screen_animation"
+anims/RESET = SubResource( 3 )
+anims/initian_screen_animation = SubResource( 4 )
+
+[connection signal="animation_finished" from="Animation" to="." method="on_animation_finished"]
